@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "eslint-config-next": "^14.1.3"
+  }
+}
