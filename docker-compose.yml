@@ -6,7 +6,7 @@ services:
     ports:
       - "8080:8080"
     env_file:
-      - /backend/.env
+      - ./backend/.env
 
   frontend:
     build: ./frontend
@@ -18,7 +18,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - /backend/.data/mongodb:/data/db
+      - ./backend/.data/mongodb:/data/db
 
 volumes:
   data:
