@@ -8,18 +8,16 @@ $ docker-compose up --build
 ```
 
 ## Run the frontend
-1. Install [pnpm](https://pnpm.io/zh-TW/) 
+1. Install [pnpm](https://pnpm.io/zh-TW/)
 ```console
 pnpm install
 pnpm start
 ```
 
 ## Run the backend
-1. You need to run mongoDB first
 ```console
-$  pip install poetry
-$  poetry install
-$  uvicorn app:app --host 0.0.0.0 --port 8080
+$  cd backend
+$  docker compose up --build
 ```
 
 ## Before you submit you commit, please install pre-commit
