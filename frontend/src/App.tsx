@@ -8,16 +8,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './components/About';
 import Login from './components/Login';
 import Home from './components/Home';
+import ProtectedRoutes from './utils/ProtectedRoutes';
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
       <BrowserRouter>
+      <Navigation />
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
