@@ -11,6 +11,8 @@ interface UserMenuProps {
 
 const UserMenu = ({ op }: UserMenuProps) => {
   const navigate = useNavigate();
+  const access_token = localStorage.getItem('access_token') ?? '';
+
   const logout = async () => {
     await signOut(auth);
     navigate('/login');
@@ -21,14 +23,19 @@ const UserMenu = ({ op }: UserMenuProps) => {
 
   return (
     <OverlayPanel ref={op}>
-      <Button
-        onClick={() => {
-          logout();
-          op.current?.hide();
-        }}
-      >
-        Logout
-      </Button>
+      <div className="mb-3">
+        <Button onClick={() => navigator.clipboard.writeText(access_token)}>Copy Token</Button>
+      </div>
+      <div>
+        <Button
+          onClick={() => {
+            logout();
+            op.current?.hide();
+          }}
+        >
+          Logout
+        </Button>
+      </div>
     </OverlayPanel>
   );
 };

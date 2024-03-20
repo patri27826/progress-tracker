@@ -40,3 +40,7 @@ paths:
           description: OK
 components:
   schemas:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

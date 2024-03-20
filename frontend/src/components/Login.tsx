@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, provider } from '../config/firebase';
 import { signInWithPopup } from 'firebase/auth';
@@ -8,18 +8,23 @@ import { useAuth } from '../auth/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
-  const userApi = new UserApi();
-  const { setIsLoggedIn } = useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+  });
 
   const login = async () => {
     try {
       // login via google
+      const userApi = new UserApi();
       const result = await signInWithPopup(auth, provider);
-      const response = await userApi.loginUser({ id_token: await result.user.getIdToken() });
-      setIsLoggedIn(true);
-      localStorage.setItem('access_token', response.data?.access_token ?? '');
+      const id_token = await result.user.getIdToken();
+      const response = await userApi.loginUser({ id_token });
+      localStorage.setItem('accessToken', response.data?.access_token ?? '');
       localStorage.setItem('user_name', result.user.displayName ?? '');
       localStorage.setItem('user_email', result.user.email ?? '');
+      setIsLoggedIn(true);
       navigate('/');
     } catch (error) {
       console.error(error);
