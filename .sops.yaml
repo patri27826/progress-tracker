@@ -1,2 +1,3 @@
 creation_rules:
+  - path_regex: .*
   - pgp: BBEC0B3F680373E6DE0F5C97F348C5F58053F4C3
