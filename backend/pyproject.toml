@@ -43,6 +43,7 @@ tomli = "^2.0.1"
 typing_extensions = "^4.8.0"
 uvicorn = "^0.23.2"
 pydantic-settings = "^2.2.1"
+firebase-admin = "^6.5.0"
 
 [tool.poetry.group.dev.dependencies]
 annotated-types = "^0.5.0"
