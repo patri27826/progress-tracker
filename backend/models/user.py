@@ -1,41 +1,19 @@
 from beanie import Document
-from fastapi.security import HTTPBasicCredentials
-from pydantic import BaseModel, EmailStr
 
 
 class User(Document):
-    fullname: str
-    email: EmailStr
-    password: str
+    uid: str
+    user_name: str
+    user_email: str
 
     class Config:
         json_schema_extra = {
             "example": {
-                "fullname": "Abdulazeez Abdulazeez Adeshina",
-                "email": "abdul@youngest.dev",
-                "password": "3xt3m#",
+                "uid": "12345",
+                "user_name": "Patrick",
+                "user_email": "patrick@gmail.com",
             }
         }
 
     class Settings:
-        name = "admin"
-
-
-class UserSignIn(HTTPBasicCredentials):
-    class Config:
-        json_schema_extra = {
-            "example": {"username": "abdul@youngest.dev", "password": "3xt3m#"}
-        }
-
-
-class UserData(BaseModel):
-    fullname: str
-    email: EmailStr
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "fullname": "Abdulazeez Abdulazeez Adeshina",
-                "email": "abdul@youngest.dev",
-            }
-        }
+        name = "user"
