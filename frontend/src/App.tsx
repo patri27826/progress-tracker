@@ -9,20 +9,23 @@ import About from './components/About';
 import Login from './components/Login';
 import Home from './components/Home';
 import ProtectedRoutes from './utils/ProtectedRoutes';
+import { AuthProvider } from './auth/AuthContext';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-      <Navigation />
-        <Routes>
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Navigation />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

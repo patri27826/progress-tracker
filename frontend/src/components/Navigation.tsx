@@ -1,11 +1,10 @@
 import React, { useRef } from 'react';
-
 import { Menubar } from 'primereact/menubar';
 import { useNavigate } from 'react-router-dom';
-import { Avatar } from 'primereact/avatar';
-import { auth } from '../config/firebase';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import UserMenu from './UserMenu';
+import { Button } from 'primereact/button';
+import { IoMenu } from 'react-icons/io5';
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -23,18 +22,11 @@ const Navigation = () => {
       command: () => navigate('/about'),
     },
   ];
+  const userName = localStorage.getItem('user_name');
   const end = (
     <div className="flex align-items-center gap-2">
-      {auth.currentUser && (
-        <>
-          <text className="my-2">{auth.currentUser?.displayName}</text>
-          <Avatar
-            image={auth?.currentUser?.photoURL ?? ''}
-            onClick={(e) => op.current?.toggle(e)}
-            shape="circle"
-          />
-        </>
-      )}
+      {userName && <div className="my-2.5">{userName}</div>}
+      <Button label="" icon={<IoMenu />} text onClick={(e) => op.current?.toggle(e)} />
     </div>
   );
 

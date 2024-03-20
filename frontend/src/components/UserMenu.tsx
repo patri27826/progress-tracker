@@ -12,17 +12,23 @@ interface UserMenuProps {
 const UserMenu = ({ op }: UserMenuProps) => {
   const navigate = useNavigate();
   const logout = async () => {
-    const result = await signOut(auth);
-    console.log(result);
+    await signOut(auth);
     navigate('/login');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_email');
+    localStorage.removeItem('access_token');
   };
 
   return (
     <OverlayPanel ref={op}>
-      <Button onClick={() => {
-        logout();
-        op.current?.hide()
-      }}>Logout</Button>
+      <Button
+        onClick={() => {
+          logout();
+          op.current?.hide();
+        }}
+      >
+        Logout
+      </Button>
     </OverlayPanel>
   );
 };
