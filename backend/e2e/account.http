@@ -3,7 +3,7 @@
 ### Login
 
 # @name login
-POST {{host}}/user/login
+POST {{host}}/api/user/login
 accept: application/json
 Content-Type: application/json
 
@@ -15,7 +15,7 @@ Content-Type: application/json
 @access_token =
 
 # @name verifyToken
-POST {{host}}/token/verify
+POST {{host}}/api/user/authorized
 accept: application/json
 Authorization: Bearer {{access_token}}
 Content-Type: application/json

@@ -1,0 +1,18 @@
+@host=http://localhost:8080
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiSHVTTjNnTWpDYldTdEhFMXBaMG56RzVEc2Y5MyIsImV4cGlyZXMiOjE3MTExOTQzNDEuNjc0NzEzfQ.z7MdeTl-jvBKewJft2sUxEBPTQxl8H49iPKbnYxFMrs
+
+### Create Project
+
+# @name createProject
+POST {{host}}/api/projects
+accept: application/json
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+    "name": "Porject1",
+    "owner_id": "870ec420-32a5-4dec-8715-788c8d4b20d7",
+    "member_list": [],
+    "status_list": [],
+    "status_entity": []
+}

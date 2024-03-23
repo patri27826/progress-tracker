@@ -1,19 +1,10 @@
-from beanie import Document
+from .base_entity import BaseEntity
 
 
-class User(Document):
+class User(BaseEntity):
     uid: str
     user_name: str
     user_email: str
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "uid": "12345",
-                "user_name": "Patrick",
-                "user_email": "patrick@gmail.com",
-            }
-        }
 
     class Settings:
         name = "user"

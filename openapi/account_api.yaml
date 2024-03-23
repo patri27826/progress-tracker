@@ -8,7 +8,7 @@ servers:
     description: Local server
 
 paths:
-  /user/login:
+  /api/user/login:
     post:
       summary: Login User
       operationId: LoginUser
@@ -29,7 +29,7 @@ paths:
                 properties:
                   access_token:
                     type: string
-  /token/verify:
+  /api/user/authorized:
     post:
       summary: Verify Access Token
       operationId: VerifyToken
