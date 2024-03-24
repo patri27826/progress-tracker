@@ -19,9 +19,9 @@ const Login = () => {
       // login via google
       const userApi = new UserApi();
       const result = await signInWithPopup(auth, provider);
-      const id_token = await result.user.getIdToken();
+      const id_token = await result.user.getIdToken(true);
       const response = await userApi.loginUser({ id_token });
-      localStorage.setItem('accessToken', response.data?.access_token ?? '');
+      localStorage.setItem('access_token', response.data?.access_token ?? '');
       localStorage.setItem('user_name', result.user.displayName ?? '');
       localStorage.setItem('user_email', result.user.email ?? '');
       setIsLoggedIn(true);

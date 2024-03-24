@@ -28,7 +28,7 @@ const Navigation = () => {
   const end = isLoggedIn && (
     <div className="flex align-items-center gap-2">
       {userName && <div className="my-2.5">{userName}</div>}
-      <Button label="" icon={<IoMenu />} text onClick={(e) => op.current?.toggle(e)} />
+      <Button icon={<IoMenu />} text onClick={(e) => op.current?.toggle(e)} />
     </div>
   );
 

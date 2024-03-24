@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const checkLoginStatus = async () => {
     try {
-      const accessToken = localStorage.getItem('accessToken') ?? '';
+      const accessToken = localStorage.getItem('access_token') ?? '';
       const config = accessToken
         ? new Configuration({
             accessToken,

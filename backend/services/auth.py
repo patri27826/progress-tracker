@@ -15,7 +15,7 @@ firebase_admin.initialize_app(cred)
 
 
 async def get_user_info(user_id_token: str):
-    decoded_token = auth.verify_id_token(user_id_token)
+    decoded_token = auth.verify_id_token(id_token=user_id_token, clock_skew_seconds=1)
     uid = decoded_token["uid"]
     user_name = decoded_token["name"]
     user_email = decoded_token["email"]
