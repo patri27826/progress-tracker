@@ -1,6 +1,6 @@
 import uuid
 
-from models.project import Project, ProjectCreate
+from models.project import Project, ProjectCreate, ProjectUpdate
 from pydantic import UUID4
 from services.common import create_new_entity
 
@@ -18,12 +18,19 @@ async def new_project(data: ProjectCreate):
 
 
 async def add_project(data: ProjectCreate) -> None:
-    new_project = await new_project(data)
-    await project_collection.create(new_project)
+    project_instance = await new_project(data)
+    await project_instance.create()
 
 
-async def update_project(id: UUID4, data: dict) -> None:
-    des_body = {k: v for k, v in data.items() if v is not None}
+async def get_project(id: UUID4) -> Project:
+    project = await project_collection.get(id)
+    if not project:
+        raise ValueError("Project with this id does not exist")
+    return project
+
+
+async def update_project(id: UUID4, data: ProjectUpdate) -> None:
+    des_body = {k: v for k, v in data.model_dump().items() if v is not None}
 
     if not des_body:
         raise ValueError("No fields to update")

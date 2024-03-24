@@ -21,6 +21,6 @@ class Settings(BaseSettings):
 
 async def initiate_database():
     client = AsyncIOMotorClient(Settings().DATABASE_URL)
-    await init_beanie(
-        database=client.get_default_database(), document_models=models.__all__
-    )
+    MONGO_DB_DATABASE_NAME = "progress-tracker"
+    DATABASE = client[MONGO_DB_DATABASE_NAME]
+    await init_beanie(database=DATABASE, document_models=models.__all__)

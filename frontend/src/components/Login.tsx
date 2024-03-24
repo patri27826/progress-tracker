@@ -22,6 +22,7 @@ const Login = () => {
       const id_token = await result.user.getIdToken(true);
       const response = await userApi.loginUser({ id_token });
       localStorage.setItem('access_token', response.data?.access_token ?? '');
+      localStorage.setItem('user_id', result.user.uid ?? '');
       localStorage.setItem('user_name', result.user.displayName ?? '');
       localStorage.setItem('user_email', result.user.email ?? '');
       setIsLoggedIn(true);
