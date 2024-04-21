@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import { AuthProvider } from './auth/AuthContext';
+import ProjectDetail from './components/ProjectDetail';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/project/:id" element={<ProjectDetail />} />
             </Route>
           </Routes>
         </BrowserRouter>
